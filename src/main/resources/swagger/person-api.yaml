@@ -4,15 +4,11 @@ info:
     This is a demo for swagger codegen and spring boot application.
   version: "1.0.0"
   title: Swagger Spring Boot contract-first
-host: swaggerspringboot.girisb.com
-basePath: /
 schemes:
   - http
 paths:
   /persons:
     get:
-      tags:
-        - "persons"
       summary: "List all available persons."
       operationId: "getAllPersons"
       produces:
@@ -25,8 +21,6 @@ paths:
             items:
               $ref: "#/definitions/Person"
     put:
-      tags:
-        - "persons"
       summary: "Updates a person"
       operationId: "updatePerson"
       consumes:
@@ -41,8 +35,6 @@ paths:
         200:
           description: "Successful operation"
     post:
-      tags:
-        - "persons"
       summary: "Create a new person"
       operationId: "createPerson"
       consumes:
@@ -62,8 +54,6 @@ paths:
             $ref: '#/definitions/Person'
   /persons/{id}:
     get:
-      tags:
-        - "persons"
       summary: "fetches a person by its id"
       operationId: "findPersonById"
       produces:
@@ -82,8 +72,6 @@ paths:
         404:
           description: "Person not found"
     delete:
-      tags:
-        - "persons"
       summary: "Deletes a person"
       operationId: "deletePerson"
       produces:
