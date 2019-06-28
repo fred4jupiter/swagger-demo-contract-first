@@ -117,3 +117,7 @@ definitions:
       age:
         type: integer
         description: "age of the user"
+    required:
+      - firstname
+      - lastname
+      - age
