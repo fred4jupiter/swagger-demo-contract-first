@@ -18,7 +18,7 @@ paths:
       produces:
         - "application/json"
       responses:
-        "200":
+        200:
           description: "Successful operation"
           schema:
             type: array
@@ -38,7 +38,7 @@ paths:
           schema:
             $ref: '#/definitions/Person'
       responses:
-        "200":
+        200:
           description: "Successful operation"
     post:
       tags:
@@ -56,16 +56,38 @@ paths:
           schema:
             $ref: '#/definitions/Person'
       responses:
-        "200":
+        200:
           description: "Successful operation"
           schema:
             $ref: '#/definitions/Person'
   /persons/{id}:
+    get:
+      tags:
+        - "persons"
+      summary: "fetches a person by its id"
+      operationId: "findPersonById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          type: "integer"
+          in: "path"
+          required: true
+          description: "The id of the person"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: '#/definitions/Person'
+        404:
+          description: "Person not found"
     delete:
       tags:
         - "persons"
       summary: "Deletes a person"
       operationId: "deletePerson"
+      produces:
+        - "application/json"
       parameters:
         - name: "id"
           type: "integer"
