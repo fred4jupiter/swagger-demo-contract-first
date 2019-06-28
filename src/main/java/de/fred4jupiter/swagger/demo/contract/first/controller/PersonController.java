@@ -33,4 +33,14 @@ public class PersonController implements PersonsApi {
         Person createdPerson = personService.createPerson(person);
         return ResponseEntity.ok(createdPerson);
     }
+
+    @Override
+    public ResponseEntity<Void> deletePerson(Integer id) {
+        if (!personService.existsId(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        personService.deletePerson(id);
+        return ResponseEntity.ok().build();
+    }
 }

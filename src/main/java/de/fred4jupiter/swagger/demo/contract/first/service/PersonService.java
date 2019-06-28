@@ -52,4 +52,8 @@ public class PersonService {
         updatePerson.setLastname(person.getLastname());
         updatePerson.setAge(person.getAge());
     }
+
+    public boolean existsId(Integer id) {
+        return this.persons.stream().filter(person -> person.getId().equals(id)).count() > 0;
+    }
 }

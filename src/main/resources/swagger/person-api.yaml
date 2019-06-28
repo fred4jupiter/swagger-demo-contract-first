@@ -11,49 +11,73 @@ schemes:
 paths:
   /persons:
     get:
-      summary: List all available persons.
-      operationId: getAllPersons
+      tags:
+        - "persons"
+      summary: "List all available persons."
+      operationId: "getAllPersons"
       produces:
-        - application/json
+        - "application/json"
       responses:
         "200":
-          description: Successful operation
+          description: "Successful operation"
           schema:
             type: array
             items:
               $ref: "#/definitions/Person"
     put:
-      summary: Updates a person
-      operationId: updatePerson
+      tags:
+        - "persons"
+      summary: "Updates a person"
+      operationId: "updatePerson"
       consumes:
-        - application/json
+        - "application/json"
       parameters:
-        - in: body
-          name: person
+        - name: "person"
+          in: "body"
           required: true
           schema:
             $ref: '#/definitions/Person'
       responses:
         "200":
-          description: Successful operation
+          description: "Successful operation"
     post:
-      summary: Create a new person
-      operationId: createPerson
+      tags:
+        - "persons"
+      summary: "Create a new person"
+      operationId: "createPerson"
       consumes:
-        - application/json
+        - "application/json"
       produces:
-        - application/json
+        - "application/json"
       parameters:
-        - in: body
-          name: person
+        - name: "person"
+          in: "body"
           required: true
           schema:
             $ref: '#/definitions/Person'
       responses:
         "200":
-          description: Successful operation
+          description: "Successful operation"
           schema:
             $ref: '#/definitions/Person'
+  /persons/{id}:
+    delete:
+      tags:
+        - "persons"
+      summary: "Deletes a person"
+      operationId: "deletePerson"
+      parameters:
+        - name: "id"
+          type: "integer"
+          in: "path"
+          required: true
+          description: "The id of the person"
+      responses:
+        200:
+          description: "Successful operation"
+        404:
+          description: "Person not found"
+
 
 definitions:
   Person:
@@ -61,13 +85,13 @@ definitions:
     properties:
       id:
         type: integer
-        description: id of the user
+        description: "id of the user"
       firstname:
         type: string
-        description: firstname of the user
+        description: "firstname of the user"
       lastname:
         type: string
-        description: lastname of the user
+        description: "lastname of the user"
       age:
         type: integer
-        description: age of the user
+        description: "age of the user"
