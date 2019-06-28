@@ -54,6 +54,6 @@ public class PersonService {
     }
 
     public boolean existsId(Integer id) {
-        return this.persons.stream().filter(person -> person.getId().equals(id)).count() > 0;
+        return this.persons.stream().anyMatch(person -> person.getId().equals(id));
     }
 }
