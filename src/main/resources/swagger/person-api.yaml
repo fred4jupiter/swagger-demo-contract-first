@@ -22,6 +22,39 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Person"
+    put:
+      summary: Updates a person
+      operationId: updatePerson
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: person
+          required: true
+          schema:
+            $ref: '#/definitions/Person'
+      responses:
+        "200":
+          description: Successful operation
+    post:
+      summary: Create a new person
+      operationId: createPerson
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: person
+          required: true
+          schema:
+            $ref: '#/definitions/Person'
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/Person'
+
 definitions:
   Person:
     type: object
