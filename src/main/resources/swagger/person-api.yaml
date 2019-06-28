@@ -1,0 +1,40 @@
+swagger: "2.0"
+info:
+  description: |
+    This is a demo for swagger codegen and spring boot application.
+  version: "1.0.0"
+  title: Swagger Spring Boot contract-first
+host: swaggerspringboot.girisb.com
+basePath: /
+schemes:
+  - http
+paths:
+  /persons:
+    get:
+      summary: List all available persons.
+      operationId: getAllPersons
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Person"
+definitions:
+  Person:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: id of the user
+      firstname:
+        type: string
+        description: firstname of the user
+      lastname:
+        type: string
+        description: lastname of the user
+      age:
+        type: integer
+        description: age of the user

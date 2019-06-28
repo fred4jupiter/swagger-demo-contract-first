@@ -1,2 +1,3 @@
 # swagger-demo-contract-first
-Spring Boot with Swagger contract-first example.
+
+Spring Boot application with Swagger **contract-first** example.

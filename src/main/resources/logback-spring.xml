@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You can override this configuration from external via JVM variable like so:  java -Dlogging.config=logback.xml -jar intplat-camunda.jar -->
+<configuration>
+    <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.home}/swagger-demo-contract-first.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%highlight(%d) %highlight(%p) %highlight([%c]) - %msg %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${user.home}/archived/swagger-demo-contract-first%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <!-- keep 30 days -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight(%d) %highlight(%p) %highlight([%c]) - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="de.fred4jupiter.swagger.demo.contract.first" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFileAppender"/>
+    </root>
+</configuration>
